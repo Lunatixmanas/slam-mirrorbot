@@ -131,7 +131,7 @@ class GoogleDriveHelper:
                                      resumable=False)
         file_metadata = {
             'name': file_name,
-            'description': 'Uploaded using Slam Mirrorbot',
+            'description': '𝗞𝗢𝗧 𝗕𝗢𝗧𝗦',
             'mimeType': mime_type,
         }
         if parent_id is not None:
@@ -190,7 +190,7 @@ class GoogleDriveHelper:
         # File body description
         file_metadata = {
             'name': file_name,
-            'description': 'Uploaded by Slam Mirrorbot',
+            'description': '𝗞𝗢𝗧 𝗕𝗢𝗧𝗦',
             'mimeType': mime_type,
         }
         try:
@@ -412,15 +412,15 @@ class GoogleDriveHelper:
                 buttons = button_build.ButtonMaker()
                 if SHORTENER is not None and SHORTENER_API is not None:
                     surl = short_url(durl)
-                    buttons.buildbutton("☁️ Drive Link", surl)
+                    buttons.buildbutton("☁️ 𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞", surl)
                 else:
-                    buttons.buildbutton("☁️ Drive Link", durl)
+                    buttons.buildbutton("🔱 𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞", durl)
                 if INDEX_URL is not None:
                     url_path = requests.utils.quote(f'{meta.get("name")}')
                     url = f'{INDEX_URL}/{url_path}/'
                     if SHORTENER is not None and SHORTENER_API is not None:
                         siurl = short_url(url)
-                        buttons.buildbutton("⚡ Index Link", siurl)
+                        buttons.buildbutton("🌠 𝗜𝗡𝗗𝗘𝗫 𝗟𝗜𝗡𝗞", siurl)
                     else:
                         buttons.buildbutton("⚡ Index Link", url)
             else:
