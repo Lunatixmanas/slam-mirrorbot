@@ -21,15 +21,15 @@ PAGE_NO = 1
 
 
 class MirrorStatus:
-    STATUS_UPLOADING = "Uploading...📤"
-    STATUS_DOWNLOADING = "Downloading...📥"
-    STATUS_CLONING = "Cloning...♻️"
-    STATUS_WAITING = "Queued...📝"
-    STATUS_FAILED = "Failed 🚫. Cleaning Download..."
-    STATUS_PAUSE = "Paused...⭕️"
-    STATUS_ARCHIVING = "Archiving...🔐"
-    STATUS_EXTRACTING = "Extracting...📂"
-    STATUS_SPLITTING = "Splitting...✂️"
+    STATUS_UPLOADING = "𝗨𝗣𝗟𝗢𝗔𝗗𝗜𝗡𝗚...📤"
+    STATUS_DOWNLOADING = "𝗗𝗢𝗪𝗟𝗢𝗔𝗗𝗜𝗡𝗚...📥"
+    STATUS_CLONING = "𝗖𝗟𝗢𝗡𝗜𝗡𝗚...♻️"
+    STATUS_WAITING = "𝗤𝗨𝗘𝗨𝗘𝗗...📝"
+    STATUS_FAILED = "𝗙𝗔𝗜𝗟𝗘𝗗 🚫. 𝗖𝗟𝗘𝗔𝗡𝗜𝗡𝗚 𝗗𝗢𝗪𝗟𝗢𝗔𝗗..."
+    STATUS_PAUSE = "𝗣𝗔𝗨𝗦𝗘𝗗...⭕️"
+    STATUS_ARCHIVING = "𝗔𝗥𝗖𝗛𝗜𝗩𝗜𝗡𝗚...🔐"
+    STATUS_EXTRACTING = "𝗘𝗫𝗧𝗥𝗔𝗖𝗧𝗜𝗡𝗚...📂"
+    STATUS_SPLITTING = "𝗦𝗣𝗟𝗜𝗧𝗧𝗜𝗡𝗚...✂️"
 
 
 PROGRESS_MAX_SIZE = 100 // 8
@@ -128,8 +128,8 @@ def get_readable_message():
                 globals()['PAGE_NO'] -= 1
             start = COUNT
         for index, download in enumerate(list(download_dict.values())[start:], start=1):
-            msg += f"<b>Filename:</b> <code>{download.name()}</code>"
-            msg += f"\n<b>Status:</b> <i>{download.status()}</i>"
+            msg += f"<b>𝗙𝗜𝗟𝗘 𝗡𝗔𝗠𝗘:</b> <code>{download.name()}</code>"
+            msg += f"\n<b>𝗦𝗧𝗔𝗧𝗨𝗦:</b> <i>{download.status()}</i>"
             if download.status() not in [
                 MirrorStatus.STATUS_ARCHIVING,
                 MirrorStatus.STATUS_EXTRACTING,
@@ -137,20 +137,20 @@ def get_readable_message():
             ]:
                 msg += f"\n<code>{get_progress_bar_string(download)} {download.progress()}</code>"
                 if download.status() == MirrorStatus.STATUS_CLONING:
-                    msg += f"\n<b>Cloned:</b> <code>{get_readable_file_size(download.processed_bytes())}</code> of <code>{download.size()}</code>"
+                    msg += f"\n<b>𝗖𝗟𝗢𝗡𝗘𝗗:</b> <code>{get_readable_file_size(download.processed_bytes())}</code> of <code>{download.size()}</code>"
                 elif download.status() == MirrorStatus.STATUS_UPLOADING:
-                    msg += f"\n<b>Uploaded:</b> <code>{get_readable_file_size(download.processed_bytes())}</code> of <code>{download.size()}</code>"
+                    msg += f"\n<b>𝗨𝗣𝗟𝗢𝗔𝗗𝗘𝗗 : </b> <code>{get_readable_file_size(download.processed_bytes())}</code> of <code>{download.size()}</code>"
                 else:
-                    msg += f"\n<b>Downloaded:</b> <code>{get_readable_file_size(download.processed_bytes())}</code> of <code>{download.size()}</code>"
-                msg += f"\n<b>Speed:</b> <code>{download.speed()}</code> <b>ETA:</b> <code>{download.eta()}</code>"
+                    msg += f"\n<b>𝗗𝗢𝗪𝗟𝗢𝗔𝗗:</b> <code>{get_readable_file_size(download.processed_bytes())}</code> of <code>{download.size()}</code>"
+                msg += f"\n<b>𝗦𝗣𝗘𝗘𝗗:</b> <code>{download.speed()}</code> <b>𝗘𝗧𝗔:</b> <code>{download.eta()}</code>"
                 try:
-                    msg += f"\n<b>Seeders:</b> <code>{download.aria_download().num_seeders}</code>" \
-                           f" | <b>Peers:</b> <code>{download.aria_download().connections}</code>"
+                    msg += f"\n<b>𝗦𝗘𝗘𝗗𝗘𝗥𝗦:</b> <code>{download.aria_download().num_seeders}</code>" \
+                           f" | <b>𝗣𝗘𝗘𝗥𝗦:</b> <code>{download.aria_download().connections}</code>"
                 except:
                     pass
                 try:
-                    msg += f"\n<b>Seeders:</b> <code>{download.torrent_info().num_seeds}</code>" \
-                           f" | <b>Leechers:</b> <code>{download.torrent_info().num_leechs}</code>"
+                    msg += f"\n<b>𝗦𝗘𝗘𝗗𝗘𝗥𝗦:</b> <code>{download.torrent_info().num_seeds}</code>" \
+                           f" | <b>𝗟𝗘𝗘𝗖𝗛𝗘𝗥𝗦:</b> <code>{download.torrent_info().num_leechs}</code>"
                 except:
                     pass
                 msg += f"\n<b>To Cancel:</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
