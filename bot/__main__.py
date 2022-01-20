@@ -31,32 +31,32 @@ def stats(update, context):
     cpuUsage = psutil.cpu_percent(interval=0.5)
     memory = psutil.virtual_memory().percent
     disk = psutil.disk_usage('/').percent
-    stats = f'<b>Bot Uptime:</b> <code>{currentTime}</code>\n' \
-            f'<b>Total Disk Space:</b> <code>{total}</code>\n' \
-            f'<b>Used:</b> <code>{used}</code> ' \
-            f'<b>Free:</b> <code>{free}</code>\n\n' \
-            f'<b>Upload:</b> <code>{sent}</code>\n' \
-            f'<b>Download:</b> <code>{recv}</code>\n\n' \
-            f'<b>CPU:</b> <code>{cpuUsage}%</code> ' \
-            f'<b>RAM:</b> <code>{memory}%</code> ' \
-            f'<b>DISK:</b> <code>{disk}%</code>'
+    stats = f'<b>𝗕𝗢𝗧 𝗧𝗜𝗠𝗘𝗨𝗣:</b> <code>{currentTime}</code>\n' \
+            f'<b>𝗧𝗢𝗧𝗔𝗟 𝗗𝗜𝗦𝗞 𝗦𝗣𝗔𝗖𝗘:</b> <code>{total}</code>\n' \
+            f'<b>𝗨𝗦𝗘𝗗:</b> <code>{used}</code> ' \
+            f'<b>𝗙𝗥𝗘𝗘:</b> <code>{free}</code>\n\n' \
+            f'<b>𝗨𝗣𝗟𝗢𝗔𝗗:</b> <code>{sent}</code>\n' \
+            f'<b>𝗗𝗢𝗪𝗟𝗢𝗔𝗗:</b> <code>{recv}</code>\n\n' \
+            f'<b>𝗖𝗣𝗨:</b> <code>{cpuUsage}%</code> ' \
+            f'<b>𝗥𝗔𝗠:</b> <code>{memory}%</code> ' \
+            f'<b>𝗗𝗜𝗦𝗞:</b> <code>{disk}%</code>'
     sendMessage(stats, context.bot, update)
 
 
 def start(update, context):
     buttons = button_build.ButtonMaker()
-    buttons.buildbutton("Repo", "https://github.com/SlamDevs/slam-mirrorbot")
-    buttons.buildbutton("Channel", "https://t.me/SlamMirrorUpdates")
+    buttons.buildbutton("𝗞𝗢𝗧 𝗕𝗢𝗧𝗦", "https://t.me/KOT_BOTS")
+    buttons.buildbutton("𝗦𝗨𝗣𝗣𝗢𝗥𝗧 𝗚𝗥𝗢𝗨𝗣", "https://t.me/KOT_REPORS")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
-This bot can mirror all your links to Google Drive!
-Type /{BotCommands.HelpCommand} to get a list of available commands
+𝗜 𝗖𝗔𝗡 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗 𝗠𝗘𝗚𝗔 𝗡𝗦 𝗟𝗜𝗡𝗞𝗦 𝗢𝗡𝗟𝗬 ⭕
+𝗕𝗢𝗧 𝗞𝗢𝗧 𝗠𝗘𝗚𝗔 𝗡𝗦 𝗜𝗦 𝗢𝗡𝗟𝗜𝗡𝗘 💯
 '''
         sendMarkup(start_string, context.bot, update, reply_markup)
     else:
         sendMarkup(
-            'Oops! not a Authorized user.\nPlease deploy your own <b>slam-mirrorbot</b>.',
+            '<b>𝗕𝗢𝗧 𝗞𝗢𝗧 𝗠𝗘𝗚𝗔 𝗡𝗦 𝗜𝗦 𝗢𝗡𝗟𝗜𝗡𝗘 💯</b>.',
             context.bot,
             update,
             reply_markup,
@@ -161,34 +161,13 @@ help = Telegraph(access_token=telegraph_token).create_page(
     )["path"]
 
 help_string = f'''
-/{BotCommands.PingCommand}: Check how long it takes to Ping the Bot
-
-/{BotCommands.AuthorizeCommand}: Authorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
-
-/{BotCommands.UnAuthorizeCommand}: Unauthorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
-
-/{BotCommands.AuthorizedUsersCommand}: Show authorized users (Only Owner & Sudo)
-
-/{BotCommands.AddSudoCommand}: Add sudo user (Only Owner)
-
-/{BotCommands.RmSudoCommand}: Remove sudo users (Only Owner)
-
-/{BotCommands.RestartCommand}: Restart the bot
-
-/{BotCommands.LogCommand}: Get a log file of the bot. Handy for getting crash reports
-
-/{BotCommands.SpeedCommand}: Check Internet Speed of the Host
-
-/{BotCommands.ShellCommand}: Run commands in Shell (Only Owner)
-
-/{BotCommands.ExecHelpCommand}: Get help for Executor module (Only Owner)
-
-/{BotCommands.TsHelpCommand}: Get help for Torrent search module
+𝗗𝗢𝗡𝗧 𝗞𝗡𝗢𝗪 𝗧𝗢 𝗨𝗦𝗘 𝗠𝗘𝗛 ❔
+𝗖𝗟𝗜𝗖𝗞 𝗕𝗘𝗟𝗢𝗪 𝗧𝗛𝗘 𝗕𝗨𝗧𝗧𝗢𝗡 
 '''
 
 def bot_help(update, context):
     button = button_build.ButtonMaker()
-    button.buildbutton("Other Commands", f"https://telegra.ph/{help}")
+    button.buildbutton("𝗣𝗜𝗡𝗚 𝗛𝗘𝗔𝗥", f"https://t.me/KOT_FREE_DE_LA_HOYA_OFF")
     reply_markup = InlineKeyboardMarkup(button.build_menu(1))
     sendMarkup(help_string, context.bot, update, reply_markup)
 
@@ -233,7 +212,7 @@ def main():
         os.remove(".restartmsg")
     elif OWNER_ID:
         try:
-            text = "<b>Bot Restarted!</b>"
+            text = "<b>𝗘𝗩𝗘𝗥𝗬 𝗠𝗢𝗠𝗘𝗡𝗧 𝗜𝗦 𝗔 𝗙𝗥𝗘𝗦𝗛 𝗕𝗘𝗚𝗜𝗡𝗜𝗡𝗚.𝗕𝗢𝗧 𝗥𝗘𝗦𝗧𝗔𝗥𝗧𝗘𝗗!</b>"
             bot.sendMessage(chat_id=OWNER_ID, text=text, parse_mode=ParseMode.HTML)
             if AUTHORIZED_CHATS:
                 for i in AUTHORIZED_CHATS:
