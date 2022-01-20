@@ -244,19 +244,19 @@ class MirrorListener(listeners.MirrorListeners):
                 update_all_messages()
             return
         with download_dict_lock:
-            msg = f'<b>Filename: </b><code>{download_dict[self.uid].name()}</code>\n<b>Size: </b><code>{size}</code>'
+            msg = f'<b>𝗙𝗜𝗟𝗘 𝗡𝗔𝗠𝗘: </b><code>{download_dict[self.uid].name()}</code>\n<b>𝗦𝗜𝗭𝗘: </b><code>{size}</code>'
             if os.path.isdir(f'{DOWNLOAD_DIR}/{self.uid}/{download_dict[self.uid].name()}'):
-                msg += '\n<b>Type: </b><code>Folder</code>'
-                msg += f'\n<b>SubFolders: </b><code>{folders}</code>'
-                msg += f'\n<b>Files: </b><code>{files}</code>'
+                msg += '\n<b>𝗧𝗬𝗣𝗘: </b><code>Folder</code>'
+                msg += f'\n<b>𝗦𝗨𝗕 𝗙𝗢𝗟𝗗𝗘𝗥𝗦: </b><code>{folders}</code>'
+                msg += f'\n<b>𝗙𝗜𝗟𝗘𝗦: </b><code>{files}</code>'
             else:
-                msg += f'\n<b>Type: </b><code>{typ}</code>'
+                msg += f'\n<b>𝗧𝗬𝗣𝗘: </b><code>{typ}</code>'
             buttons = button_build.ButtonMaker()
             if SHORTENER is not None and SHORTENER_API is not None:
                 surl = short_url(link)
-                buttons.buildbutton("☁️ Drive Link", surl)
+                buttons.buildbutton("☁️ 𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞", surl)
             else:
-                buttons.buildbutton("☁️ Drive Link", link)
+                buttons.buildbutton("☁ 𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞", link)
             LOGGER.info(f'Done Uploading {download_dict[self.uid].name()}')
             if INDEX_URL is not None:
                 url_path = requests.utils.quote(f'{download_dict[self.uid].name()}')
@@ -265,19 +265,19 @@ class MirrorListener(listeners.MirrorListeners):
                     share_url += '/'
                     if SHORTENER is not None and SHORTENER_API is not None:
                         siurl = short_url(share_url)
-                        buttons.buildbutton("⚡ Index Link", siurl)
+                        buttons.buildbutton("⚡ 𝗜𝗡𝗗𝗘𝗫 𝗟𝗜𝗡𝗞", siurl)
                     else:
-                        buttons.buildbutton("⚡ Index Link", share_url)
+                        buttons.buildbutton("⚡ 𝗜𝗡𝗗𝗘𝗫 𝗟𝗜𝗡𝗞", share_url)
                 else:
                     share_urls = f'{INDEX_URL}/{url_path}?a=view'
                     if SHORTENER is not None and SHORTENER_API is not None:
                         siurl = short_url(share_url)
-                        buttons.buildbutton("⚡ Index Link", siurl)
+                        buttons.buildbutton("⚡ 𝗜𝗡𝗗𝗘𝗫 𝗟𝗜𝗡𝗞", siurl)
                         if VIEW_LINK:
                             siurls = short_url(share_urls)
                             buttons.buildbutton("🌐 View Link", siurls)
                     else:
-                        buttons.buildbutton("⚡ Index Link", share_url)
+                        buttons.buildbutton("⚡ 𝗜𝗡𝗗𝗘𝗫 𝗟𝗜𝗡𝗞", share_url)
                         if VIEW_LINK:
                             buttons.buildbutton("🌐 View Link", share_urls)
             if BUTTON_FOUR_NAME is not None and BUTTON_FOUR_URL is not None:
@@ -445,11 +445,11 @@ def _mirror(bot, update, isTar=False, extract=False, isZip=False, isQbit=False, 
 
     elif bot_utils.is_mega_link(link):
         if BLOCK_MEGA_LINKS:
-            sendMessage("Mega links are blocked!", bot, update)
+            sendMessage("𝗠𝗘𝗚𝗔 𝗟𝗜𝗡𝗞𝗦 𝗔𝗥𝗘 𝗡𝗢𝗧 𝗕𝗟𝗢𝗖𝗞𝗘𝗗!", bot, update)
             return
         link_type = bot_utils.get_mega_link_type(link)
         if link_type == "folder" and BLOCK_MEGA_FOLDER:
-            sendMessage("Mega folder are blocked!", bot, update)
+            sendMessage("𝗠𝗘𝗚𝗔 𝗟𝗜𝗡𝗞𝗦 𝗔𝗥𝗘 𝗡𝗢𝗧 𝗕𝗟𝗢𝗖𝗞𝗘𝗗!", bot, update)
         else:
             mega_dl = MegaDownloadHelper()
             mega_dl.add_download(link, f'{DOWNLOAD_DIR}{listener.uid}/', listener)
